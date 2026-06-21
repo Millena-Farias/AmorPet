@@ -76,9 +76,9 @@ function Agendamento() {
                             <option value="">Selecione o Serviço que voce deseja</option>
                             <option value="Banho">Banho</option>
                             <option value="Tosa">Tosa</option>
-                            <option value="BanhoeTosa">Banho e Tosa</option>
-                            <option value="ConsultadeRotina">Consulta de Rotina</option>
-                            <option value="ConstultaVeterinaria">Constulta Veterinaria</option>
+                            <option value="Banho e Tosa">Banho e Tosa</option>
+                            <option value="Consulta de Rotina">Consulta de Rotina</option>
+                            <option value="Constulta Veterinaria">Constulta Veterinaria</option>
                             <option value="Vacina">Vacina</option>
 
                         </select>

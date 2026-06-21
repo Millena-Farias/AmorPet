@@ -6,10 +6,13 @@ import CadastroPet from './pages/CadastroPet'
 import ListarAgendamento from './pages/ListaAgendamentos'
 import Registrar from './pages/Registro'
 import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import NavBar from './components/Navbar'
 function App() {
   return (
      
    <BrowserRouter>
+    <NavBar />
    <Routes>
 
 <Route path="/clientes" element={<CadastroCliente />} />
@@ -18,6 +21,7 @@ function App() {
 <Route path="/lista" element={<ListarAgendamento />} />
 <Route path="/registro" element={<Registrar />} />
 <Route path="/login" element={<Login />} />
+<Route path="/dashboard" element={<Dashboard />} />
 
    </Routes>
    </BrowserRouter>
