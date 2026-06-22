@@ -185,3 +185,59 @@ nav ul li a {
   transition: background 0.3s;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
+
+/* LOGIN */
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.login-lado-esquerdo {
+  width: 50%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffb3d1, #c44fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 30px 30px 0;
+}
+
+.login-lado-esquerdo img {
+  width: 85%;
+  mix-blend-mode: multiply; /* remove o fundo branco da imagem */
+}
+.login-lado-direito {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-box h1 {
+  color: #ec3e86;
+  font-size: 32px;
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-box p {
+  text-align: center;
+  margin-top: 15px;
+  color: #757575;
+  font-size: 14px;
+}
+
+.login-box p a {
+  color: #ff6b9d;
+  font-weight: 700;
+  text-decoration: none;
+}

@@ -1,6 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 
 function NavBar() {
+    const navigate = useNavigate()
+    function sair(){
+        localStorage.removeItem('token')
+        navigate('/login')
+    }
     return (
         <nav>
             <h2>.</h2>
@@ -21,7 +26,8 @@ function NavBar() {
 
 
                 <li>
-                    <Link to="/Sair">Sair</Link>
+                   <button onClick={sair}>Sair</button>
+                    
                 </li>
             </ul>
 
