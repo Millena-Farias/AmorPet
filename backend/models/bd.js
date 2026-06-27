@@ -17,7 +17,7 @@ async function testarConexao(){
         await sequelize.authenticate()
         console.log('Conexão estabelecida')
     } catch(erro){
-        console.error('Não foi possivel conectar', error)
+        console.error('Não foi possivel conectar', erro)
     }
 }
 testarConexao()

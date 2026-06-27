@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from '../services/api'
 import {useState, useEffect} from 'react'
 
 function Dashboard() {
@@ -7,17 +7,23 @@ function Dashboard() {
 
     useEffect(() => {
         async function buscarAgendamentos() {
-            const resposta = await axios.get('http://localhost:3001/agendamentos')
+            const resposta = await api.get('/agendamentos')
             setAgendamentos(resposta.data)
         }
         async function buscarPets() {
-            const resposta = await axios.get('http://localhost:3001/pets')
+            const resposta = await api.get('/pets')
             setPets(resposta.data)
         }
         buscarAgendamentos()
         buscarPets()
     }, [])
 
+async function atualizarStatus(id, status) {
+    
+    await api.patch('/agendamentos/' + id + '/status', { status })
+    const resposta = await api.get('/agendamentos')
+    setAgendamentos(resposta.data)
+}
     return (
           <div className="conteudo">
         <h1>AmorPet 🐾</h1>
@@ -38,7 +44,10 @@ function Dashboard() {
                 <p>✂️ Serviço: {agendamento.servico}</p>
                 <p>📅 Data: {agendamento.data}</p>
                 <p>🕐 Hora: {agendamento.hora}</p>
+                  <button onClick={() => atualizarStatus(agendamento.id, 'concluido')}>✅</button>
+<button onClick={() => atualizarStatus(agendamento.id, 'cancelado')}>❌</button>
             </div>
+            
         ))}
     </div>
     )

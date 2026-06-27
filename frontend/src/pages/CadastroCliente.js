@@ -1,30 +1,46 @@
 import { useState } from 'react'
-import axios from 'axios'
+import api from '../services/api'
+import {useNavigate} from 'react-router-dom'
 
 function CadastroCliente() {
+    const navigate = useNavigate()
     const [nome, setNome] = useState('')
     const [telefone, setTelefone] = useState('')
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('');
     const [mensagem, setMensagem] = useState('')
 
     async function cadastrar(e) {
-        e.preventDefault()
-        try {
-            await axios.post('http://localhost:3001/clientes', {
-                nome,
-                telefone,
-                email
-            })
-            setMensagem('Cliente cadastrado com sucesso!')
-        } catch (error) {
-            setMensagem('Erro ao cadastrar o cliente')
-        }
+    e.preventDefault()
 
+    // validações antes de enviar
+    if (!nome || !telefone || !email) {
+        return setMensagem('Todos os campos são obrigatórios')
     }
 
+    if (telefone.length < 10) {
+        return setMensagem('Telefone inválido — mínimo 10 dígitos com DDD')
+    }
+
+    if (!email.includes('@')) {
+        return setMensagem('Email inválido')
+    }
+
+    try {
+        await api.post('/clientes', {
+            nome,
+            telefone,
+            email
+        })
+        setMensagem('Cliente cadastrado com sucesso!')
+        navigate('/pets')
+    } catch (error) {
+        setMensagem('Erro ao cadastrar — tente novamente')
+    }
+}
+
     return (
-        <div>
-            <h1>Cadastre aqui!</h1>
+        <div className="completar-cliente">
+            <h1>Complete seu perfil!</h1>
             <form onSubmit={cadastrar}>
                 <div>
 

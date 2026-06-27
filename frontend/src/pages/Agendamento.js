@@ -1,59 +1,41 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../services/api'
 
 function Agendamento() {
     const [data, setData] = useState('')
     const [hora, setHora] = useState('')
     const [servico, setServico] = useState('')
-    const [petId, setPetId    ] = useState('')
-    const [clienteId, setClienteId] = useState('')
+    const [petId, setPetId] = useState('')
     const [pets, setPets] = useState([])
-    const [clientes, setClientes] = useState([])
     const [mensagem, setMensagem] = useState('')
 
     useEffect(() => {
-        async function buscarClientes() {
-            const resposta = await axios.get('http://localhost:3001/clientes')
-            setClientes(resposta.data)
-        }
-        buscarClientes()
-    }, [])
-
-    useEffect(() => {
         async function buscarPets() {
-            const resposta = await axios.get('http://localhost:3001/pets')
+            const resposta = await api.get('/pets')
             setPets(resposta.data)
         }
         buscarPets()
     }, [])
+
     async function cadastrar(e) {
         e.preventDefault()
         try {
-            await axios.post('http://localhost:3001/agendamentos', {
-                data,
-                hora,
-                servico,
-                petId,
-                clienteId
-
-            })
-            setMensagem('Pet cadastrado com sucesso!')
+            await api.post('/agendamentos', { data, hora, servico, petId })
+            setMensagem('Agendamento realizado com sucesso!')
         } catch (error) {
-            setMensagem('Erro ao cadastrar pet')
+            setMensagem('Erro ao realizar agendamento — tente novamente')
         }
-
     }
 
     return (
-        <div>
-            <h1>Cadastre seu Pet aqui</h1>
+        <div className="conteudo-form">
+            <h1>Agende aqui!</h1>
             <form onSubmit={cadastrar}>
                 <div>
-                    <label htmlFor="Data">Data:</label>
+                    <label htmlFor="data">Data:</label>
                     <input
                         type="date"
                         id="data"
-
                         onChange={(e) => setData(e.target.value)}
                     />
                     <div>
@@ -64,23 +46,22 @@ function Agendamento() {
                             <option value="09:00">09:00</option>
                             <option value="10:40">10:40</option>
                             <option value="14:00">14:00</option>
-                            <option value="16:30">16:30</option>
                             <option value="15:00">15:00</option>
-                            <option value="19:00">19:00</option>
+                            <option value="16:30">16:30</option>
                             <option value="17:00">17:00</option>
+                            <option value="19:00">19:00</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="servico">Serviço</label>
                         <select id="servico" onChange={(e) => setServico(e.target.value)}>
-                            <option value="">Selecione o Serviço que voce deseja</option>
+                            <option value="">Selecione o serviço que você deseja</option>
                             <option value="Banho">Banho</option>
                             <option value="Tosa">Tosa</option>
                             <option value="Banho e Tosa">Banho e Tosa</option>
                             <option value="Consulta de Rotina">Consulta de Rotina</option>
-                            <option value="Constulta Veterinaria">Constulta Veterinaria</option>
+                            <option value="Consulta Veterinária">Consulta Veterinária</option>
                             <option value="Vacina">Vacina</option>
-
                         </select>
                     </div>
                     <div>
@@ -95,24 +76,12 @@ function Agendamento() {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="clienteId">Dono do Pet</label>
-                        <select id="clienteId" onChange={(e) => setClienteId(e.target.value)}>
-                            <option value="">Selecione o dono</option>
-                            {clientes.map((cliente) => (
-                                <option key={cliente.id} value={cliente.id}>
-                                    {cliente.nome}
-                                </option>
-                            ))}
-                        </select>
+                        <input type="submit" value="Agendar" />
                     </div>
                     <div>
-                        <input type="submit" value="Cadastrar" />
-                    </div>
-                    <div>
-                        {mensagem && <p>  {mensagem} </p>}
+                        {mensagem && <p>{mensagem}</p>}
                     </div>
                 </div>
-
             </form>
         </div>
     )

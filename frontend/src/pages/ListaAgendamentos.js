@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../services/api'
 
 function ListaAgendamentos() {
     const [agendamentos, setAgendamentos] = useState([])
 
     useEffect(() => {
         async function listarAgendamentos() {
-            const resposta = await axios.get('http://localhost:3001/agendamentos')
+            const resposta = await api.get('/agendamentos')
             setAgendamentos(resposta.data)
         }
         listarAgendamentos()

@@ -18,6 +18,14 @@ const Cliente = sequelize.define('cliente', {
     email: {
         type: DataTypes.STRING(100),
         allowNull: false
+    },
+    usuarioId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'usuario',
+            key: 'id'
+        }
     }
 }, {
     freezeTableName: true

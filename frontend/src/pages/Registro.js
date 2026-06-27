@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import api from '../services/api'
 import {Link, useNavigate} from 'react-router-dom'
 
 function Registrar() {
@@ -12,7 +12,7 @@ function Registrar() {
     async function registrarPessoa(e) {
         e.preventDefault()
         try {
-            await axios.post('http://localhost:3001/auth/registrar', {
+            await api.post('/auth/registrar', {
                 nome,
                 email,
                 senha

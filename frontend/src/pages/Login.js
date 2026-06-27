@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import api from '../services/api'
 import { Link, useNavigate } from 'react-router-dom'
 
 function Logar() {
@@ -9,19 +9,24 @@ function Logar() {
     const [mensagem, setMensagem] = useState('')
 
     async function logarPessoa(e) {
-        e.preventDefault()
-        try {
-            const resposta = await axios.post('http://localhost:3001/auth/login', {
-                email,
-                senha
-            })
+    e.preventDefault()
+    try {
+        // 1. Fazer login e salvar token
+        const resposta = await api.post('/auth/login', { email, senha })
+        localStorage.setItem('token', resposta.data.token)
 
-            localStorage.setItem('token', resposta.data.token)
+        // 2. Verificar se tem perfil
+        try {
+            await api.get('/clientes/meu-perfil')
             navigate('/dashboard')
         } catch (error) {
-            setMensagem('Erro ao logar')
+           navigate('/clientes')
         }
+
+    } catch (error) {
+        setMensagem('Erro ao logar')
     }
+}
   return (
     <div className="login-container">
         <div className="login-lado-esquerdo">

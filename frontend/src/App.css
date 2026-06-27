@@ -51,7 +51,7 @@ nav ul li a:hover {
 
 /* CONTEÚDO PRINCIPAL */
 .conteudo {
-  margin-left: 240px;
+  margin-left: 260px;
   padding: 40px;
   width: 100%;
 }
@@ -127,7 +127,8 @@ form {
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-  max-width: 500px;
+  width: 100%;
+  max-width: 600px; /* ← aumenta esse valor */
 }
 
 form div {
@@ -240,4 +241,46 @@ nav ul li a {
   color: #ff6b9d;
   font-weight: 700;
   text-decoration: none;
+}
+
+
+/* BOTÃO SAIR */
+nav button {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: all 0.3s;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+nav button:hover {
+  background-color: #ff6b9d;
+}
+.conteudo-form {
+  margin-left: 260px;
+  padding: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.completar-cliente{
+    width: 500px;
+    padding: 10px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

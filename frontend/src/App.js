@@ -12,7 +12,7 @@ import NavBar from './components/Navbar'
 
 function Layout() {
   const location = useLocation()
-  const semNavbar = ['/login', '/registro']
+  const semNavbar = ['/login', '/registro', '/clientes']
 
   return (
     <>

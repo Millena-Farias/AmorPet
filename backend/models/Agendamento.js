@@ -6,11 +6,10 @@ const Agendamento = sequelize.define('Agendamento',{
         type:DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement:true
-
     },
     data:{
-type:DataTypes.DATEONLY,
-allowNull:false
+        type:DataTypes.DATEONLY,
+        allowNull:false
     },
     hora:{
         type:DataTypes.STRING,
@@ -33,6 +32,10 @@ allowNull:false
             model:'cliente',
             key:'id'
         }
+    },
+    status: {
+        type: DataTypes.ENUM('pendente', 'concluido', 'cancelado'),
+        defaultValue: 'pendente'
     }
 },
 {freezeTableName: true}
