@@ -30,7 +30,7 @@ async function login(req, res) {
         }
         const senhaCorreta = await bcrypt.compare(senha, usuario.senha)
         if (!senhaCorreta) {
-            return res.status(404).json({ erro: 'Senha errada' })
+            return res.status(401).json({ erro: 'Senha errada' })
         }
         const token = jwt.sign(
             { id: usuario.id, tipo: usuario.tipo },
@@ -39,7 +39,7 @@ async function login(req, res) {
         )
         res.status(200).json({ token })
     } catch (error) {
-        res.status(500).json({ erro: error.message })
+        res.status(400).json({ erro: error.message })
     }
 }
 

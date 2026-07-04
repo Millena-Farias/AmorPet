@@ -1,4 +1,5 @@
 import { Link, useNavigate} from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 function NavBar() {
     const navigate = useNavigate()
@@ -7,36 +8,30 @@ function NavBar() {
         navigate('/login')
     }
     return (
-        <nav>
-            <h2>.</h2>
+        <motion.nav
+            initial={{ x: -260 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.5 }}
+        >
+            <div className="nav-logo">
+                
+            </div>
             <ul>
                 <li>
-                    <Link to="/dashboard">Dashboard </Link>
+                    <Link to="/dashboard">Dashboard</Link>
                 </li>
-
-
                 <li>
                     <Link to="/agendamentos">Agendamentos</Link>
                 </li>
-
-
                 <li>
                     <Link to="/pets">Pets</Link>
                 </li>
-
-
                 <li>
                    <button onClick={sair}>Sair</button>
-                    
                 </li>
             </ul>
-
-
-
-        </nav>
-
+        </motion.nav>
     )
 }
-
 
 export default NavBar

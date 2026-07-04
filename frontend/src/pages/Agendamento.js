@@ -18,6 +18,9 @@ function Agendamento() {
     }, [])
 
     async function cadastrar(e) {
+        if (!data || !hora || !servico || !petId){
+            return setMensagem('campos obrigatorios')
+        }
         e.preventDefault()
         try {
             await api.post('/agendamentos', { data, hora, servico, petId })

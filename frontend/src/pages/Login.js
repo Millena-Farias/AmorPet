@@ -10,6 +10,11 @@ function Logar() {
 
     async function logarPessoa(e) {
     e.preventDefault()
+    if (!email || !senha  ){
+        return setMensagem('Preencha os campos vazios')
+    } if(!email.includes('@')){
+        return setMensagem('Email inválido')
+    } 
     try {
         // 1. Fazer login e salvar token
         const resposta = await api.post('/auth/login', { email, senha })
@@ -23,9 +28,16 @@ function Logar() {
            navigate('/clientes')
         }
 
-    } catch (error) {
-        setMensagem('Erro ao logar')
+    }  catch (error) {
+    const status = error.response?.status
+    if (status === 404) {
+        setMensagem('Email não cadastrado')
+    } else if (status === 401) {
+        setMensagem('Senha incorreta')
+    } else {
+        setMensagem('Erro ao logar, tente novamente')
     }
+}
 }
   return (
     <div className="login-container">

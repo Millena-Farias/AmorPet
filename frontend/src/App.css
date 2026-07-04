@@ -22,6 +22,8 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  border-right: 3px solid #ff6b9d;
+  box-shadow: 4px 0 15px rgba(255, 107, 157, 0.3);
 }
 
 
@@ -58,12 +60,17 @@ nav ul li a:hover {
 
 /* TÍTULOS */
 h1 {
-   color: #91c2ff;
+  font-family: 'Pacifico', cursive;
   font-size: 42px;
-  font-weight: 900;
+  font-weight: 400;
   margin-bottom: 30px;
+  background: linear-gradient(#00b4d8, #0077b6, #c44fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  text-align: left;
 }
-
 h2 {
   color: #1a1a2e;
   font-size: 22px;
@@ -283,4 +290,40 @@ nav button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.agendamento-acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-concluir {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.btn-cancelar {
+  background: linear-gradient(135deg, #ff6b6b, #ee0979);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.btn-concluir:hover, .btn-cancelar:hover {
+  opacity: 0.85;
+}
+.agendamento-label {
+  font-weight:700;
+  color: #ff6b9d;
+  font-size:15px;
 }

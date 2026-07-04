@@ -9,8 +9,17 @@ function Registrar() {
     const [senha, setSenha] = useState('')
     const [mensagem, setMensagem] = useState('')
 
+
     async function registrarPessoa(e) {
         e.preventDefault()
+
+    if(!email||!senha || !nome ){
+       return setMensagem('preencha os campos vazios')
+    } if (!email.includes('@') ){
+        return setMensagem('Email inválido')
+    } if(senha.length <8){
+        return setMensagem('senha deve ter 8 digitos')
+    }
         try {
             await api.post('/auth/registrar', {
                 nome,
