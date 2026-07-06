@@ -9,6 +9,9 @@ import Registrar from './pages/Registro'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import NavBar from './components/Navbar'
+import RotaProtegida from './components/RotaProtegida'
+import NotFound from './pages/NotFound'
+
 
 function Layout() {
   const location = useLocation()
@@ -22,13 +25,28 @@ function Layout() {
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registrar />} />
         <Route path="/clientes" element={<CadastroCliente />} />
-        <Route path="/pets" element={<CadastroPet />} />
-        <Route path="/agendamentos" element={<Agendamento />} />
-        <Route path="/lista" element={<ListarAgendamento />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<NotFound />} />
+
+        <Route path="/dashboard" element={
+          <RotaProtegida><Dashboard /></RotaProtegida>
+        } />
+
+        <Route path="/pets" element={
+          <RotaProtegida><CadastroPet /></RotaProtegida>
+        } />
+
+        <Route path="/agendamentos" element={
+          <RotaProtegida><Agendamento /></RotaProtegida>
+        } />
+
+        <Route path="/lista" element={
+          <RotaProtegida><ListarAgendamento /></RotaProtegida>
+        } />
+
       </Routes>
     </>
   )
+
 }
 
 function App() {

@@ -43,7 +43,7 @@ function Logar() {
     <div className="login-container">
         <div className="login-lado-esquerdo">
             <img src="gatos.png" alt="gatos" style={{width: '80%'}}></img>
-        </div>
+        </div>  
         <div className="login-lado-direito">
             <div className="login-box">
                 <h1>Login</h1>
