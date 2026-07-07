@@ -20,18 +20,12 @@ const Agendamento = sequelize.define('Agendamento',{
         allowNull:false
     },
     petId:{
-        type:DataTypes.INTEGER,
-        references:{
-            model:'pet',
-            key:'id'
-        }
+        type:DataTypes.INTEGER
+      
     },
     clienteId:{
-        type:DataTypes.INTEGER,
-        references:{
-            model:'cliente',
-            key:'id'
-        }
+        type:DataTypes.INTEGER
+       
     },
     status: {
         type: DataTypes.ENUM('pendente', 'concluido', 'cancelado'),

@@ -20,13 +20,10 @@ allowNull: false
         allowNull: false
     },
     clienteId: {
-        type:DataTypes.INTEGER,
-        references:{
-            model:'cliente',
-            key:'id'
-        }
+    type: DataTypes.INTEGER
+}
        
-    },
+    
 }, {
     freezeTableName: true
 })
