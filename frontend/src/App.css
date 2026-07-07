@@ -327,3 +327,128 @@ nav button:hover {
   color: #ff6b9d;
   font-size:15px;
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  body {
+    flex-direction: column;
+  }
+
+  /* NAVBAR MOBILE */
+  nav {
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    gap: 10px;
+    border-right: none;
+    border-bottom: 3px solid #ff6b9d;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  nav ul li a {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  nav button {
+    font-size: 13px;
+    padding: 6px 10px;
+    width: auto;
+  }
+
+  .nav-logo {
+    font-size: 18px;
+  }
+
+  /* CONTEÚDO PRINCIPAL */
+  .conteudo {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .conteudo-form {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  /* TÍTULOS */
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  /* CARDS */
+  .cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .card {
+    min-width: auto;
+    width: 100%;
+  }
+
+  /* LOGIN */
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-lado-esquerdo {
+    width: 100%;
+    min-height: 200px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .login-lado-esquerdo img {
+    width: 50%;
+  }
+
+  .login-lado-direito {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  /* FORMULÁRIOS */
+  form {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  /* AGENDAMENTOS */
+  .agendamento-card {
+    padding: 15px;
+  }
+
+  .agendamento-acoes {
+    flex-direction: column;
+  }
+
+  .btn-concluir, .btn-cancelar {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* COMPLETAR CLIENTE */
+  .completar-cliente {
+    width: 90%;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 20px auto;
+  }
+}
