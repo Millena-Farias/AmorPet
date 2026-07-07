@@ -31,10 +31,8 @@ async function listarAgendamento(req, res) {
         }
 
         
-        const filtro = req.usuario.tipo === 'admin' ? {} : { where: { clienteId: cliente.id, status: 'pendente' } }
-        
         const agendamentos = await Agendamento.findAll({
-            ...filtro,
+            where: { clienteId: cliente.id, status: 'pendente' },
             include: [
                 { model: Pet },
                 { model: Cliente }

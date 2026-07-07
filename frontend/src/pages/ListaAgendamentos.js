@@ -17,8 +17,8 @@ function ListaAgendamentos() {
             <h1>Agendamentos</h1>
             {agendamentos.map((agendamento) => (
                 <div key={agendamento.id}>
-                    <p>Pet: {agendamento.Pet.nome}</p>
-                    <p>Dono: {agendamento.cliente.nome}</p>
+                    <p>Pet: {agendamento.Pet?.nome || 'Não especificado'}</p>
+                    <p>Dono: {agendamento.cliente?.nome || 'Não especificado'}</p>
                     <p>Serviço: {agendamento.servico}</p>
                     <p>Data: {agendamento.data}</p>
                     <p>Hora: {agendamento.hora}</p>

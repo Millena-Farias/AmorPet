@@ -55,7 +55,7 @@ function Dashboard() {
             <h2>Próximos Agendamentos</h2>
             {agendamentos.map((agendamento) => (
                 <div className="agendamento-card" key={agendamento.id}>
-                    <p><span className="agendamento-label">Pet:</span> {agendamento.Pet.nome}</p>
+                    <p><span className="agendamento-label">Pet:</span> {agendamento.Pet?.nome || 'Não especificado'}</p>
                     <p><span className="agendamento-label">Serviço:</span> {agendamento.servico}</p>
                     <p><span className="agendamento-label">Data:</span> {new Date(agendamento.data + 'T00:00:00').toLocaleDateString('pt-BR')}</p>
                     <p><span className="agendamento-label">Hora:</span> {agendamento.hora}</p>

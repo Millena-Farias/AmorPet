@@ -27,8 +27,7 @@ async function listarPet(req, res) {
         }
 
         
-        const filtro = req.usuario.tipo === 'admin' ? {} : { where: { clienteId: cliente.id } }
-        const pets = await Pet.findAll(filtro)
+        const pets = await Pet.findAll({ where: { clienteId: cliente.id } })
         res.status(200).json(pets)
     } catch (error) {
         res.status(500).json({ erro: error.message })

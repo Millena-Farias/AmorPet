@@ -27,8 +27,7 @@ async function criarCliente(req, res) {
 async function listarClientes(req, res) {
     try {
 
-        const filtro = req.usuario.tipo === 'admin' ? {} : { where: { usuarioId: req.usuario.id } }
-        const clientes = await Cliente.findAll(filtro)
+        const clientes = await Cliente.findAll({ where: { usuarioId: req.usuario.id } })
         res.status(200).json(clientes)
     } catch (error) {
         res.status(500).json({ erro: error.message })
